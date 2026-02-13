@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 
-export default function Home() {
+// Define the shape of your data
+interface ApiData {
+  message: string;
+  timestamp: string;
+}
 
-  const [data, setData] = useState(null)
+export default function Home() {
+  // Tell TypeScript what type data will be
+  const [data, setData] = useState<ApiData | null>(null);
 
   useEffect(() => {
     fetch('/api/hello')
       .then(res => res.json())
       .then(data => setData(data))
-  })
-
-
+      .catch(err => console.error('Error fetching data:', err));
+  }, []); // ⚠️ Add empty array here!
 
   return (
     <div style={{ padding: '50px' }}>
