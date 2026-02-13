@@ -1,9 +1,14 @@
+"use client"
+
 import { useEffect, useState } from "react";
 
 // Define the shape of your data
 interface ApiData {
   message: string;
   timestamp: string;
+  name: string;
+  username: string;
+  gender: "male" | "female";
 }
 
 export default function Home() {
@@ -24,6 +29,9 @@ export default function Home() {
         <div>
           <p>message: {data.message}</p>
           <p>Time: {data.timestamp}</p>
+          <p>name: {data.name}</p>
+          <p>username: {data.username}</p>
+          <p>gender: {data.gender}</p>
         </div>
       ) : (
         <p>Loading...</p>
